@@ -46,7 +46,8 @@ flutter:
 
 #--------------- LOCAL ASSETS ------------------#
   assets:
-    - assets/logos/
+    - assets/logos/    
+    - assets/images/food_items/
 
   #--------------- LOCAL FONTS ------------------#
   fonts:

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_store/utils/theme/widget_themes/appbar_theme.dart';
 import 'package:food_store/utils/theme/widget_themes/bottom_sheet_theme.dart';
+import 'package:food_store/utils/theme/widget_themes/card_theme.dart';
 import 'package:food_store/utils/theme/widget_themes/checkbox_theme.dart';
 import 'package:food_store/utils/theme/widget_themes/chip_theme.dart';
 import 'package:food_store/utils/theme/widget_themes/elevated_button_theme.dart';
@@ -28,6 +29,7 @@ class AppTheme {
     elevatedButtonTheme: TElevatedButtonTheme.lightElevatedButtonTheme,
     outlinedButtonTheme: TOutlinedButtonTheme.lightOutlinedButtonTheme,
     inputDecorationTheme: TTextFormFieldTheme.lightInputDecorationTheme,
+    cardTheme: AppCardTheme.lightCardTheme,
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -45,5 +47,6 @@ class AppTheme {
     elevatedButtonTheme: TElevatedButtonTheme.darkElevatedButtonTheme,
     outlinedButtonTheme: TOutlinedButtonTheme.darkOutlinedButtonTheme,
     inputDecorationTheme: TTextFormFieldTheme.darkInputDecorationTheme,
+    cardTheme: AppCardTheme.darkCardTheme,
   );
 }

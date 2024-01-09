@@ -44,6 +44,7 @@ class CartActionButtons extends StatelessWidget {
           radius: 4,
           backgroundColor: AppColors.primary,
           child: const Icon(
+            color: Colors.white,
             Iconsax.add,
           ),
         ),

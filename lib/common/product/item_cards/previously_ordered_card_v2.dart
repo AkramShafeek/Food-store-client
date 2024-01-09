@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:food_store/common/product/cart/cart_action_buttons.dart';
 import 'package:food_store/common/widgets/containers/rounded_container.dart';
+import 'package:food_store/utils/constants/colors.dart';
 import 'package:food_store/utils/constants/image_strings.dart';
 import 'package:food_store/utils/constants/sizes.dart';
 
-class PreviouslyOrderedCard extends StatelessWidget {
-  const PreviouslyOrderedCard({
+class PreviouslyOrderedCardV2 extends StatelessWidget {
+  const PreviouslyOrderedCardV2({
     super.key,
     required this.foodName,
     required this.canteenName,

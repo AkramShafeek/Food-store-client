@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_store/utils/constants/colors.dart';
 import 'package:food_store/utils/constants/sizes.dart';
 
 class RoundedContainer extends StatelessWidget {
@@ -11,7 +10,7 @@ class RoundedContainer extends StatelessWidget {
     this.height,
     this.radius = AppSizes.md,
     this.padding,
-    this.backgroundColor = AppColors.white,
+    this.backgroundColor,
     this.border,
   });
 
@@ -26,18 +25,20 @@ class RoundedContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return ClipRRect(
       clipBehavior: Clip.antiAlias,
-      width: width,
-      height: height,
-      padding: padding,
-      margin: margin,
-      decoration: BoxDecoration(
-        border: border,
-        borderRadius: BorderRadius.circular(radius),
-        color: backgroundColor,
+      borderRadius: BorderRadius.circular(radius),
+      child: Container(
+        width: width,
+        height: height,
+        padding: padding,
+        margin: margin,
+        decoration: BoxDecoration(
+          border: border,
+          color: backgroundColor,
+        ),
+        child: child,
       ),
-      child: child,
     );
   }
 }

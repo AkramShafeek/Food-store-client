@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:food_store/common/product/item_cards/canteen_card.dart';
 import 'package:food_store/common/product/item_cards/previously_ordered_card.dart';
+import 'package:food_store/common/product/item_cards/previously_ordered_card_v2.dart';
 import 'package:food_store/common/texts/section_heading.dart';
 import 'package:food_store/common/widgets/containers/primary_header_container.dart';
 import 'package:food_store/features/home/screens/widgets/home_app_bar.dart';
+import 'package:food_store/features/home/screens/widgets/promo_slider.dart';
 import 'package:food_store/utils/constants/colors.dart';
+import 'package:food_store/utils/constants/image_strings.dart';
 import 'package:food_store/utils/constants/sizes.dart';
 import 'package:food_store/utils/device/device_utility.dart';
 import 'package:iconsax/iconsax.dart';
@@ -50,33 +54,63 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: AppSizes.spaceBtwItems),
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: AppSizes.md),
-              child: SectionHeading(
-                title: "Previously ordered",
-                showActionButton: false,
+              padding: EdgeInsets.all(AppSizes.sm),
+              child: Column(
+                children: [
+                  SizedBox(height: AppSizes.spaceBtwItems),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: AppSizes.md),
+                    child: SectionHeading(
+                      title: "Popular choices",
+                      showActionButton: false,
+                    ),
+                  ),
+                  SizedBox(height: AppSizes.spaceBtwItems),
+                  Padding(
+                    padding: EdgeInsets.all(AppSizes.md),
+                    child: PromoSlider(slides: [
+                      AppImages.vegFriedMaggi2,
+                      AppImages.vegFriedMaggi,
+                      AppImages.vegFriedMaggi,
+                    ]),
+                  ),
+                  // PopularItemCard(image: AppImages.vegFriedMaggi),
+                  SizedBox(height: AppSizes.spaceBtwItems),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: AppSizes.md),
+                    child: SectionHeading(
+                      title: "Previously ordered",
+                      showActionButton: false,
+                    ),
+                  ),
+                  SizedBox(height: AppSizes.spaceBtwItems),
+                  CanteenCard(
+                    canteenName: "Vidhyarthi Khana",
+                    image: "vidyarti khana",
+                  ),
+                  SizedBox(height: AppSizes.spaceBtwItems),
+                  PreviouslyOrderedCardV2(
+                    foodName: "Veg fried maggi",
+                    canteenName: "Vidhyarthi Khana",
+                    price: 50,
+                  ),
+                  SizedBox(height: AppSizes.sm),
+                  PreviouslyOrderedCard(
+                    foodName: "Veg fried maggi",
+                    canteenName: "Vidhyarthi Khana",
+                    price: 50,
+                  ),
+                  SizedBox(height: AppSizes.sm),
+                  PreviouslyOrderedCard(
+                    foodName: "Veg fried maggi",
+                    canteenName: "Vidhyarthi Khana",
+                    price: 50,
+                  ),
+                  SizedBox(height: AppSizes.sm),
+                ],
               ),
             ),
-            const SizedBox(height: AppSizes.spaceBtwItems),
-            const PreviouslyOrderedCard(
-              foodName: "Veg fried maggi",
-              canteenName: "Vidhyarthi Khana",
-              price: 50,
-            ),
-            const SizedBox(height: AppSizes.sm),
-            const PreviouslyOrderedCard(
-              foodName: "Veg fried maggi",
-              canteenName: "Vidhyarthi Khana",
-              price: 50,
-            ),
-            const SizedBox(height: AppSizes.sm),
-            const PreviouslyOrderedCard(
-              foodName: "Veg fried maggi",
-              canteenName: "Vidhyarthi Khana",
-              price: 50,
-            ),
-            const SizedBox(height: AppSizes.sm),
           ],
         ),
       ),

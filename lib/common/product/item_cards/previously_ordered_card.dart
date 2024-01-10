@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_store/common/product/cart/cart_action_buttons.dart';
 import 'package:food_store/common/widgets/containers/rounded_container.dart';
-import 'package:food_store/utils/constants/image_strings.dart';
 import 'package:food_store/utils/constants/sizes.dart';
 
 class PreviouslyOrderedCard extends StatelessWidget {
@@ -10,11 +9,13 @@ class PreviouslyOrderedCard extends StatelessWidget {
     required this.foodName,
     required this.canteenName,
     required this.price,
+    required this.image,
   });
 
   final String foodName;
   final String canteenName;
   final double price;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +26,13 @@ class PreviouslyOrderedCard extends StatelessWidget {
           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const RoundedContainer(
+            RoundedContainer(
               radius: 10,
               width: 120,
-              child: Center(
-                child: Image(
-                  fit: BoxFit.fill,
-                  image: AssetImage(AppImages.vegFriedMaggi),
-                ),
+              height: 120,
+              child: Image(
+                fit: BoxFit.cover,
+                image: AssetImage(image),
               ),
             ),
             const SizedBox(width: AppSizes.spaceBtwItems),
@@ -44,16 +44,19 @@ class PreviouslyOrderedCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(foodName,
-                        style: Theme.of(context).textTheme.titleLarge),
+                        style: Theme.of(context).textTheme.bodyLarge),
                     const SizedBox(height: AppSizes.xs),
-                    Text(canteenName,
-                        style: Theme.of(context).textTheme.bodySmall!),
+                    Text(
+                      canteenName,
+                      style: Theme.of(context).textTheme.labelSmall,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                     const SizedBox(height: AppSizes.lg),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text('Rs. ${price.toString()}',
-                            style: Theme.of(context).textTheme.titleMedium),
+                            style: Theme.of(context).textTheme.bodySmall),
                         const CartActionButtons(),
                       ],
                     ),

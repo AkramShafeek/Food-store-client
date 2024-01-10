@@ -18,7 +18,9 @@ class PopularItemCard extends StatelessWidget {
       child: RoundedContainer(
         padding: const EdgeInsets.all(AppSizes.xs),
         radius: AppSizes.md,
-        backgroundColor: isDarkMode ? AppColors.dark : AppColors.light,
+        backgroundColor: isDarkMode
+            ? AppColors.darkerGrey.withOpacity(0.4)
+            : AppColors.light,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

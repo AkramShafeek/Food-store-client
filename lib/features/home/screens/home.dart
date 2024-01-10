@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_store/common/product/item_cards/canteen_card.dart';
-import 'package:food_store/common/product/item_cards/previously_ordered_card.dart';
-import 'package:food_store/common/product/item_cards/previously_ordered_card_v2.dart';
 import 'package:food_store/common/texts/section_heading.dart';
 import 'package:food_store/common/widgets/containers/primary_header_container.dart';
 import 'package:food_store/features/home/screens/widgets/home_app_bar.dart';
+import 'package:food_store/features/home/screens/widgets/previously_ordered_lists.dart';
 import 'package:food_store/features/home/screens/widgets/promo_slider.dart';
 import 'package:food_store/utils/constants/colors.dart';
 import 'package:food_store/utils/constants/image_strings.dart';
@@ -24,6 +22,7 @@ class HomeScreen extends StatelessWidget {
             PrimaryHeaderContainer(
               child: Column(
                 children: [
+                  const SizedBox(height: AppSizes.md),
                   const HomeAppBar(),
                   const SizedBox(height: AppSizes.spaceBtwItems),
                   Padding(
@@ -85,29 +84,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: AppSizes.spaceBtwItems),
-                  CanteenCard(
-                    canteenName: "Vidhyarthi Khana",
-                    image: "vidyarti khana",
-                  ),
-                  SizedBox(height: AppSizes.spaceBtwItems),
-                  PreviouslyOrderedCardV2(
-                    foodName: "Veg fried maggi",
-                    canteenName: "Vidhyarthi Khana",
-                    price: 50,
-                  ),
-                  SizedBox(height: AppSizes.sm),
-                  PreviouslyOrderedCard(
-                    foodName: "Veg fried maggi",
-                    canteenName: "Vidhyarthi Khana",
-                    price: 50,
-                  ),
-                  SizedBox(height: AppSizes.sm),
-                  PreviouslyOrderedCard(
-                    foodName: "Veg fried maggi",
-                    canteenName: "Vidhyarthi Khana",
-                    price: 50,
-                  ),
-                  SizedBox(height: AppSizes.sm),
+                  PreviouslyOrderedItemsList(),
                 ],
               ),
             ),

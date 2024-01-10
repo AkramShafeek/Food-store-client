@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_store/common/product/cart/cart_action_buttons.dart';
 import 'package:food_store/common/widgets/containers/rounded_container.dart';
-import 'package:food_store/utils/constants/colors.dart';
 import 'package:food_store/utils/constants/image_strings.dart';
 import 'package:food_store/utils/constants/sizes.dart';
 

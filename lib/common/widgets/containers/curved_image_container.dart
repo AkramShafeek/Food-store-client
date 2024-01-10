@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_store/common/widgets/custom%20shapes/curved_card_image_edges.dart';
-import 'package:food_store/utils/constants/image_strings.dart';
 import 'package:food_store/utils/constants/sizes.dart';
 
 class CurvedImageContainer extends StatelessWidget {

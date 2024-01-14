@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:food_store/features/authentication/controllers/login/login_controller.dart';
 import 'package:food_store/features/authentication/screens/signup/signup.dart';
-import 'package:food_store/navigation_menu.dart';
 import 'package:food_store/utils/constants/sizes.dart';
+import 'package:food_store/utils/validators/validation.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -12,29 +13,44 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final LoginController controller = Get.put(LoginController());
+
     return Form(
+      key: controller.loginFormKey,
       child: Column(
         children: [
           TextFormField(
+            controller: controller.email,
+            validator: (value) => AppValidator.validateEmail(value),
             decoration: const InputDecoration(
               prefixIcon: Icon(Iconsax.direct_right),
               labelText: "E-mail",
             ),
           ),
           const SizedBox(height: AppSizes.spaceBtwInputFields),
-          TextFormField(
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Iconsax.password_check),
-              labelText: "Password",
-              suffixIcon: Icon(Iconsax.eye_slash),
+          Obx(
+            () => TextFormField(
+              controller: controller.password,
+              validator: (value) => AppValidator.validatePassword(value),
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Iconsax.password_check),
+                labelText: "Password",
+                suffixIcon: IconButton(
+                  onPressed: () => controller.hidePassword.value =
+                      !controller.hidePassword.value,
+                  icon: Icon(controller.hidePassword.value
+                      ? Iconsax.eye_slash
+                      : Iconsax.eye),
+                ),
+              ),
+              obscureText: controller.hidePassword.value,
             ),
-            obscureText: true,
           ),
           const SizedBox(height: AppSizes.spaceBtwSections),
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () => Get.to(() => const BottomNavigationMenu()),
+              onPressed: () => controller.signin(),
               child: const Text("Login"),
             ),
           ),

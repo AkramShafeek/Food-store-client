@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_store/utils/constants/colors.dart';
 import 'package:food_store/utils/constants/sizes.dart';
+import 'package:food_store/utils/helper/helper_functions.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -23,6 +25,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isDarkMode = AppHelperFunctions.isDarkMode(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSizes.md),
       child: AppBar(
@@ -31,8 +34,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             ? IconButton(
                 onPressed: () => Get.back(),
                 icon: const Icon(
-                  Iconsax.arrow_left,
+                  Iconsax.arrow_left_2,
                 ),
+                color: isDarkMode ? AppColors.light : AppColors.dark,
               )
             : leadingIcon != null
                 ? IconButton(

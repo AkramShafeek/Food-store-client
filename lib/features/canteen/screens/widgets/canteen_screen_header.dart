@@ -20,7 +20,7 @@ class CanteenScreenHeader extends StatelessWidget {
       clipper: CustomImageCurvedEdges(),
       child: Container(
         width: double.infinity,
-        height: 150,
+        height: 155,
         color: AppColors.primary,
         child: Stack(
           children: [

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_store/features/authentication/screens/login/login.dart';
+import 'package:food_store/features/authentication/controllers/onboarding/onboarding_controller.dart';
 import 'package:food_store/utils/constants/colors.dart';
 import 'package:food_store/utils/constants/sizes.dart';
 import 'package:get/get.dart';
@@ -10,6 +10,7 @@ class OnBoardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(OnBoardingController());
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -19,7 +20,7 @@ class OnBoardingScreen extends StatelessWidget {
           ),
           const SizedBox(height: AppSizes.spaceBtwSections),
           ElevatedButton(
-            onPressed: () => Get.to(() => const LoginScreen()),
+            onPressed: () => controller.goToLoginPage(),
             style: ElevatedButton.styleFrom(shape: const CircleBorder()),
             child: const Icon(
               Iconsax.arrow_right_3,

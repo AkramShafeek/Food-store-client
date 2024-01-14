@@ -17,36 +17,60 @@ class PrimaryHeaderContainer extends StatelessWidget {
       child: Container(
         color: AppColors.primary,
         child: SizedBox(
-          height: 250,
           child: Stack(
             children: [
-              Positioned(
-                top: -150,
-                right: -250,
-                child: Container(
-                  width: 400,
-                  height: 400,
-                  decoration: BoxDecoration(
-                    color: AppColors.white.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(400),
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 100,
-                right: -300,
-                child: Container(
-                  width: 400,
-                  height: 400,
-                  decoration: BoxDecoration(
-                    color: AppColors.white.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(400),
-                  ),
-                ),
-              ),
+              /// Background decorations
+              const BackgroundDecor1(),
+              const BackgroundDecor2(),
+
+              /// Render the child passed on top of background
               child
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class BackgroundDecor2 extends StatelessWidget {
+  const BackgroundDecor2({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: 100,
+      right: -300,
+      child: Container(
+        width: 400,
+        height: 400,
+        decoration: BoxDecoration(
+          color: AppColors.white.withOpacity(0.1),
+          borderRadius: BorderRadius.circular(400),
+        ),
+      ),
+    );
+  }
+}
+
+class BackgroundDecor1 extends StatelessWidget {
+  const BackgroundDecor1({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: -150,
+      right: -250,
+      child: Container(
+        width: 400,
+        height: 400,
+        decoration: BoxDecoration(
+          color: AppColors.white.withOpacity(0.1),
+          borderRadius: BorderRadius.circular(400),
         ),
       ),
     );

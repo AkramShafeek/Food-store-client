@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_store/common/product/item_cards/canteen_card.dart';
 import 'package:food_store/features/canteen/screens/widgets/canteen_screen_header.dart';
 import 'package:food_store/features/canteen/controllers/canteen_controller.dart';
+import 'package:food_store/features/cart/cart%20item%20card/cart_item_card.dart';
 import 'package:food_store/utils/constants/image_strings.dart';
 import 'package:food_store/utils/constants/sizes.dart';
 import 'package:get/get.dart';
@@ -69,7 +70,24 @@ class CanteenMenuPage extends StatelessWidget {
     return Column(
       children: [
         CanteenScreenHeader(),
-        const Text("This is canteen menu page")
+        const Padding(
+          padding: EdgeInsets.all(AppSizes.md),
+          child: Column(
+            children: [
+              CartItemCard(),
+              SizedBox(height: AppSizes.xs),
+              CartItemCard(),
+              SizedBox(height: AppSizes.xs),
+              CartItemCard(),
+              SizedBox(height: AppSizes.xs),
+              CartItemCard(),
+              SizedBox(height: AppSizes.xs),
+              CartItemCard(),
+              SizedBox(height: AppSizes.xs),
+              CartItemCard(),
+            ],
+          ),
+        ),
       ],
     );
   }

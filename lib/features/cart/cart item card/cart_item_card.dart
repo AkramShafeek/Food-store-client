@@ -13,6 +13,7 @@ class CartItemCard extends StatelessWidget {
       width: double.infinity,
       radius: AppSizes.md,
       child: FoodItemCard(
+        imageSize: 100,
         foodName: "Veg Fried Maggi",
         price: 40,
         image: AppImages.vegFriedMaggi,

@@ -14,6 +14,9 @@ class CartScreenHeader extends StatelessWidget {
     return PrimaryHeaderContainer(
       child: Column(
         children: [
+          /// spacing from top of the screen
+          const SizedBox(height: AppSizes.md),
+
           /// title
           CustomAppBar(
             showBackArrow: true,
@@ -27,7 +30,7 @@ class CartScreenHeader extends StatelessWidget {
           ),
 
           /// Spacing to get a gap at the bottom of header
-          const SizedBox(height: AppSizes.spaceBtwSections + 15),
+          const SizedBox(height: AppSizes.spaceBtwSections),
         ],
       ),
     );

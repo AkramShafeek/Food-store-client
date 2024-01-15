@@ -7,13 +7,15 @@ class FoodItemCard extends StatelessWidget {
   const FoodItemCard({
     super.key,
     required this.foodName,
-    this.canteenName = "",
+    this.canteenName,
     required this.price,
     required this.image,
+    this.imageSize,
   });
 
   final String foodName;
   final String? canteenName;
+  final double? imageSize;
   final double price;
   final String image;
 
@@ -28,8 +30,8 @@ class FoodItemCard extends StatelessWidget {
           children: [
             RoundedContainer(
               radius: 10,
-              width: 120,
-              height: 120,
+              width: imageSize ?? 120,
+              height: imageSize ?? 120,
               child: Image(
                 fit: BoxFit.cover,
                 image: AssetImage(image),
@@ -43,14 +45,19 @@ class FoodItemCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(foodName,
-                        style: Theme.of(context).textTheme.bodyLarge),
-                    const SizedBox(height: AppSizes.xs),
                     Text(
-                      canteenName!,
-                      style: Theme.of(context).textTheme.labelSmall,
+                      foodName,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                      maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
+                    const SizedBox(height: AppSizes.xs),
+                    if (canteenName != null)
+                      Text(
+                        canteenName ?? "",
+                        style: Theme.of(context).textTheme.labelSmall,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     const SizedBox(height: AppSizes.lg),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -14,63 +14,73 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = AppHelperFunctions.isDarkMode(context);
     return Scaffold(
-      bottomNavigationBar: Container(
-        color: isDark ? AppColors.dark : AppColors.light,
-        padding: const EdgeInsets.all(AppSizes.md),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              flex: 2,
-              child: Padding(
-                padding: const EdgeInsets.only(left: AppSizes.md),
-                child: Text(
-                  "Total: 120",
-                  style: Theme.of(context).textTheme.headlineSmall,
+      bottomNavigationBar: BottomAppBar(
+        padding: const EdgeInsets.all(0),
+        height: 100,
+        child: Container(
+          color: isDark ? AppColors.dark : AppColors.light,
+          padding: const EdgeInsets.all(AppSizes.md),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: AppSizes.sm),
+                  child: Text(
+                    "Total: 120",
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(width: AppSizes.spaceBtwItems),
-            Expanded(
-              flex: 4,
-              child: ElevatedButton(
-                onPressed: () {},
-                child: const Text("Checkout All"),
+              const SizedBox(width: AppSizes.spaceBtwItems + 5),
+              Expanded(
+                flex: 4,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: const Text("Checkout All"),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(
+        child: Stack(
           children: [
-            /// Header
-            const CartScreenHeader(),
+            Column(
+              children: [
+                /// Header
+                const CartScreenHeader(),
 
-            /// Body
-            Padding(
-              padding: const EdgeInsets.all(AppSizes.defaultSpace),
-              child: Accordion(
-                maxOpenSections: 2,
-                disableScrolling: true,
-                children: [
-                  AccordionBuilder.build(
-                    header: const CartAccordionHeader(title: "Vidyarti Khana"),
-                    content: const CartAccordionBody(),
-                    isDark: isDark,
+                /// Body
+                Padding(
+                  padding: const EdgeInsets.all(AppSizes.sm),
+                  child: Accordion(
+                    maxOpenSections: 2,
+                    disableScrolling: true,
+                    children: [
+                      AccordionBuilder.build(
+                        header:
+                            const CartAccordionHeader(title: "Vidyarti Khana"),
+                        content: const CartAccordionBody(),
+                        isDark: isDark,
+                      ),
+                      AccordionBuilder.build(
+                        header: const CartAccordionHeader(title: "Nescafe"),
+                        content: const CartAccordionBody(),
+                        isDark: isDark,
+                      ),
+                      AccordionBuilder.build(
+                        header:
+                            const CartAccordionHeader(title: "Gowda Canteen"),
+                        content: const CartAccordionBody(),
+                        isDark: isDark,
+                      )
+                    ],
                   ),
-                  AccordionBuilder.build(
-                    header: const CartAccordionHeader(title: "Nescafe"),
-                    content: const CartAccordionBody(),
-                    isDark: isDark,
-                  ),
-                  AccordionBuilder.build(
-                    header: const CartAccordionHeader(title: "Gowda Canteen"),
-                    content: const CartAccordionBody(),
-                    isDark: isDark,
-                  )
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_store/common/product/item_cards/previously_ordered_card.dart';
+import 'package:food_store/common/product/item_cards/food_item_card.dart';
 import 'package:food_store/utils/constants/image_strings.dart';
 import 'package:food_store/utils/constants/sizes.dart';
 
@@ -38,7 +38,7 @@ class PreviouslyOrderedItemsList extends StatelessWidget {
         (item) {
           return Column(
             children: [
-              PreviouslyOrderedCard(
+              FoodItemCard(
                 foodName: item["name"]!,
                 canteenName: item["canteen"]!,
                 price: item["price"]!,

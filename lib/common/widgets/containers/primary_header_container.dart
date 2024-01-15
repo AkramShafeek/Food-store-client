@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_store/common/widgets/custom%20shapes/curved_edges.dart';
+import 'package:food_store/common/widgets/custom%20shapes/curved_card_image_edges.dart';
 import 'package:food_store/utils/constants/colors.dart';
 
 class PrimaryHeaderContainer extends StatelessWidget {
@@ -13,7 +13,7 @@ class PrimaryHeaderContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipPath(
-      clipper: CustomCurvedEdges(),
+      clipper: CustomImageCurvedEdges(),
       child: Container(
         color: AppColors.primary,
         child: SizedBox(

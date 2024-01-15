@@ -3,17 +3,17 @@ import 'package:food_store/common/product/cart/cart_action_buttons.dart';
 import 'package:food_store/common/widgets/containers/rounded_container.dart';
 import 'package:food_store/utils/constants/sizes.dart';
 
-class PreviouslyOrderedCard extends StatelessWidget {
-  const PreviouslyOrderedCard({
+class FoodItemCard extends StatelessWidget {
+  const FoodItemCard({
     super.key,
     required this.foodName,
-    required this.canteenName,
+    this.canteenName = "",
     required this.price,
     required this.image,
   });
 
   final String foodName;
-  final String canteenName;
+  final String? canteenName;
   final double price;
   final String image;
 
@@ -47,7 +47,7 @@ class PreviouslyOrderedCard extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodyLarge),
                     const SizedBox(height: AppSizes.xs),
                     Text(
-                      canteenName,
+                      canteenName!,
                       style: Theme.of(context).textTheme.labelSmall,
                       overflow: TextOverflow.ellipsis,
                     ),

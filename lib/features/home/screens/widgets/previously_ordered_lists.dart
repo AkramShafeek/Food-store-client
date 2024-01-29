@@ -9,19 +9,19 @@ class PreviouslyOrderedItems {
       "name": "Veg fried maggi",
       "canteen": "Vidyarti Khana",
       "image": AppImages.vegFriedMaggi,
-      "price": 50.0
+      "price": 50
     },
     {
       "name": "Veg fried maggi",
       "canteen": "Gowda Canteen",
       "image": AppImages.vegFriedMaggi2,
-      "price": 45.0
+      "price": 45
     },
     {
       "name": "Veg fried maggi cheese",
       "canteen": "Vidyarti Khana",
       "image": AppImages.vegFriedMaggi,
-      "price": 50.0
+      "price": 50
     },
   ];
 }

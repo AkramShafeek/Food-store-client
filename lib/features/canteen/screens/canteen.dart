@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:food_store/common/product/item_cards/canteen_card.dart';
+import 'package:food_store/common/product/item_cards/food_item_card.dart';
 import 'package:food_store/features/canteen/screens/widgets/canteen_screen_header.dart';
 import 'package:food_store/features/canteen/controllers/canteen_controller.dart';
-import 'package:food_store/features/cart/cart%20item%20card/cart_item_card.dart';
 import 'package:food_store/utils/constants/image_strings.dart';
 import 'package:food_store/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 
 class Canteens {
   static const List<Map<String, String>> canteens = [
-    {"name": "Vidyarti Khana", "image": AppImages.vegFriedMaggi},
+    {"name": "Vidyarthi Khana", "image": AppImages.vegFriedMaggi},
     {"name": "Gowda Canteen", "image": AppImages.vegFriedMaggi2},
     {"name": "Nescafe", "image": AppImages.nescafeCanteen},
     {"name": "Kapi Kuteera", "image": AppImages.vegFriedMaggi},
@@ -67,25 +67,24 @@ class CanteenMenuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = CanteenController.instance;
     return Column(
       children: [
         CanteenScreenHeader(),
-        const Padding(
-          padding: EdgeInsets.all(AppSizes.md),
-          child: Column(
-            children: [
-              CartItemCard(),
-              SizedBox(height: AppSizes.xs),
-              CartItemCard(),
-              SizedBox(height: AppSizes.xs),
-              CartItemCard(),
-              SizedBox(height: AppSizes.xs),
-              CartItemCard(),
-              SizedBox(height: AppSizes.xs),
-              CartItemCard(),
-              SizedBox(height: AppSizes.xs),
-              CartItemCard(),
-            ],
+        Padding(
+          padding: const EdgeInsets.all(AppSizes.md),
+          child: Obx(
+            () => Column(
+              children: controller.items
+                  .map((e) => FoodItemCard(
+                        foodName: e.name,
+                        canteenName: e.canteen,
+                        price: e.price,
+                        image: e.image,
+                        isNetworkImage: true,
+                      ))
+                  .toList(),
+            ),
           ),
         ),
       ],

@@ -10,6 +10,7 @@ import 'package:food_store/utils/exceptions/firebase_auth_exceptions.dart';
 import 'package:food_store/utils/exceptions/firebase_exceptions.dart';
 import 'package:food_store/utils/exceptions/format_exceptions.dart';
 import 'package:food_store/utils/exceptions/platform_exceptions.dart';
+import 'package:food_store/utils/pop_ups/loaders.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -127,6 +128,8 @@ class UserRepository extends GetxController {
     } on FirebaseAuthException catch (e) {
       throw AppFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
+      AppLoaders.errorSnackBar(
+          title: "Oh Snap!", message: "Something went wrong");
       throw AppFirebaseException(e.code).message;
     } on FormatException catch (_) {
       throw const AppFormatException();

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_store/common/product/cart/cart_action_buttons.dart';
-import 'package:food_store/common/widgets/containers/rounded_container.dart';
+import 'package:food_store/common/widgets/images/rounded_image.dart';
 import 'package:food_store/utils/constants/sizes.dart';
 
 class FoodItemCard extends StatelessWidget {
@@ -11,13 +11,15 @@ class FoodItemCard extends StatelessWidget {
     required this.price,
     required this.image,
     this.imageSize,
+    this.isNetworkImage = false,
   });
 
   final String foodName;
   final String? canteenName;
   final double? imageSize;
-  final double price;
+  final int price;
   final String image;
+  final bool isNetworkImage;
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +30,12 @@ class FoodItemCard extends StatelessWidget {
           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            RoundedContainer(
-              radius: 10,
+            RoundedImage(
+              imageUrl: image,
+              borderRadius: 10,
               width: imageSize ?? 120,
               height: imageSize ?? 120,
-              child: Image(
-                fit: BoxFit.cover,
-                image: AssetImage(image),
-              ),
+              isNetworkImage: isNetworkImage,
             ),
             const SizedBox(width: AppSizes.spaceBtwItems),
             Flexible(

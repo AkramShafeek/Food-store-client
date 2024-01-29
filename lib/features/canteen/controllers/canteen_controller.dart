@@ -1,5 +1,5 @@
-import 'package:food_store/data/models/menu_item_model.dart';
 import 'package:food_store/data/repositories/menu%20item/menu_item_repository.dart';
+import 'package:food_store/features/canteen/models/menu_item_model.dart';
 import 'package:get/get.dart';
 
 class CanteenController extends GetxController {

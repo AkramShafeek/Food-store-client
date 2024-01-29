@@ -4,6 +4,7 @@ import 'package:food_store/features/orders/models/order_item_model.dart';
 class OrderModel {
   OrderModel({
     required this.id,
+    required this.merchantId,
     required this.canteen,
     required this.totalPrice,
     required this.orders,
@@ -12,6 +13,7 @@ class OrderModel {
 
   final String id;
   final int totalPrice;
+  final String merchantId;
   final String canteen;
   final List<OrderItemModel> orders;
   int status;
@@ -19,6 +21,7 @@ class OrderModel {
   // function to create empty user model
   static OrderModel empty() => OrderModel(
         id: '',
+        merchantId: '',
         canteen: '',
         totalPrice: 0,
         orders: OrderItemModel.emptyList(),
@@ -46,6 +49,7 @@ class OrderModel {
       final data = document.data();
       return OrderModel(
         id: document.id,
+        merchantId: data?["merchantId"] ?? '',
         canteen: data?["canteen"] ?? '',
         totalPrice: data?["totalPrice"] ?? 0,
         orders: data?["orders"] ?? OrderItemModel.emptyList(),

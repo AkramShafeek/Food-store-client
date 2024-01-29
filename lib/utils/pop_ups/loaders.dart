@@ -7,6 +7,7 @@ class AppLoaders {
   static successSnackBar({required title, message = ''}) {
     Get.snackbar(title, message,
         isDismissible: true,
+        dismissDirection: DismissDirection.horizontal,
         shouldIconPulse: true,
         colorText: AppColors.white,
         backgroundColor: AppColors.primary,
@@ -19,6 +20,7 @@ class AppLoaders {
   static warningSnackBar({required title, message = ''}) {
     Get.snackbar(title, message,
         isDismissible: true,
+        dismissDirection: DismissDirection.horizontal,
         shouldIconPulse: true,
         colorText: AppColors.white,
         backgroundColor: Colors.orange,
@@ -31,6 +33,7 @@ class AppLoaders {
   static errorSnackBar({required title, message = ''}) {
     Get.snackbar(title, message,
         isDismissible: true,
+        dismissDirection: DismissDirection.horizontal,
         shouldIconPulse: true,
         colorText: AppColors.white,
         backgroundColor: Colors.red.shade600,

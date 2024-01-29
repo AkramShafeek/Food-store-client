@@ -7,14 +7,23 @@ import 'package:iconsax/iconsax.dart';
 class CartActionButtons extends StatelessWidget {
   const CartActionButtons({
     super.key,
+    required this.updateCount,
+    this.initCount = 0,
   });
+
+  final Function updateCount;
+  final int initCount;
 
   @override
   Widget build(BuildContext context) {
     final ItemController controller = ItemController();
+    controller.count.value = initCount;
     return Row(children: [
       GestureDetector(
-        onTap: () => controller.decrement(),
+        onTap: () {
+          controller.decrement();
+          updateCount(controller.count.value);
+        },
         child: RoundedContainer(
           border: Border.all(color: AppColors.grey),
           radius: 4,
@@ -38,7 +47,10 @@ class CartActionButtons extends StatelessWidget {
         ),
       ),
       GestureDetector(
-        onTap: () => controller.count.value += 1,
+        onTap: () {
+          controller.count.value += 1;
+          updateCount(controller.count.value);
+        },
         child: RoundedContainer(
           border: Border.all(color: AppColors.primary),
           radius: 4,

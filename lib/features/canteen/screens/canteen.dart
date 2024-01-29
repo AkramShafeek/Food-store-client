@@ -82,6 +82,7 @@ class CanteenMenuPage extends StatelessWidget {
                         price: e.price,
                         image: e.image,
                         isNetworkImage: true,
+                        id: e.id,
                       ))
                   .toList(),
             ),

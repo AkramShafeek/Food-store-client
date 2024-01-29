@@ -1,10 +1,15 @@
 import 'package:accordion/accordion.dart';
 import 'package:flutter/material.dart';
+import 'package:food_store/common/product/item_cards/food_item_card.dart';
+import 'package:food_store/common/widgets/containers/rounded_container.dart';
 import 'package:food_store/features/cart/cart%20item%20card/cart_item_card.dart';
+import 'package:food_store/features/cart/controllers/cart_controller.dart';
+import 'package:food_store/features/cart/models/cart_item_model.dart';
 import 'package:food_store/features/cart/screens/widgets/cart_screen_header.dart';
 import 'package:food_store/utils/constants/colors.dart';
 import 'package:food_store/utils/constants/sizes.dart';
 import 'package:food_store/utils/helper/helper_functions.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class CartScreen extends StatelessWidget {
@@ -13,6 +18,8 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = AppHelperFunctions.isDarkMode(context);
+    final controller = Get.put(CartController());
+
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
         padding: const EdgeInsets.all(0),
@@ -55,29 +62,15 @@ class CartScreen extends StatelessWidget {
 
                 /// Body
                 Padding(
-                  padding: const EdgeInsets.all(AppSizes.sm),
-                  child: Accordion(
-                    maxOpenSections: 2,
-                    disableScrolling: true,
-                    children: [
-                      AccordionBuilder.build(
-                        header:
-                            const CartAccordionHeader(title: "Vidyarti Khana"),
-                        content: const CartAccordionBody(),
-                        isDark: isDark,
-                      ),
-                      AccordionBuilder.build(
-                        header: const CartAccordionHeader(title: "Nescafe"),
-                        content: const CartAccordionBody(),
-                        isDark: isDark,
-                      ),
-                      AccordionBuilder.build(
-                        header:
-                            const CartAccordionHeader(title: "Gowda Canteen"),
-                        content: const CartAccordionBody(),
-                        isDark: isDark,
-                      )
-                    ],
+                  padding: const EdgeInsets.all(AppSizes.md),
+                  child: Obx(
+                    () => Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        for (final entry in controller.cart.entries)
+                          Cart(canteen: entry.key, items: entry.value),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -89,58 +82,61 @@ class CartScreen extends StatelessWidget {
   }
 }
 
-class AccordionBuilder {
-  static AccordionSection build(
-      {required Widget header, required Widget content, required bool isDark}) {
-    return AccordionSection(
-      headerBackgroundColor: isDark ? AppColors.dark : AppColors.light,
-      contentBorderColor: Colors.transparent,
-      contentBackgroundColor: isDark ? AppColors.dark : AppColors.light,
-      contentBorderRadius: 10,
-      headerBorderWidth: 0,
-      rightIcon: const Padding(
-        padding: EdgeInsets.only(right: 8.0),
-        child: Icon(
-          Iconsax.arrow_down_1,
-          size: 20,
-        ),
+class Cart extends StatelessWidget {
+  const Cart({
+    super.key,
+    required this.canteen,
+    required this.items,
+  });
+
+  final String canteen;
+  final List<CartItemModel> items;
+
+  @override
+  Widget build(BuildContext context) {
+    return RoundedContainer(
+      radius: AppSizes.sm,
+      padding: const EdgeInsets.all(AppSizes.md),
+      margin: const EdgeInsets.only(bottom: AppSizes.spaceBtwSections),
+      backgroundColor: AppColors.dark,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            canteen,
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
+          const SizedBox(height: AppSizes.spaceBtwItems),
+          Column(
+            children: items.map((cartItem) {
+              return Column(
+                children: [
+                  FoodItemCard(
+                    foodName: cartItem.item.name,
+                    price: cartItem.item.price,
+                    image: cartItem.item.image,
+                    isNetworkImage: true,
+                    canteenName: cartItem.item.canteen,
+                    id: cartItem.item.id,
+                    count: cartItem.count,
+                  ),
+                  const SizedBox(height: 10),
+                ],
+              );
+            }).toList(),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text("Total: 80"),
+              TextButton(
+                onPressed: () {},
+                child: const Text("Checkout"),
+              ),
+            ],
+          )
+        ],
       ),
-      header: header,
-      content: content,
-    );
-  }
-}
-
-class CartAccordionHeader extends StatelessWidget {
-  const CartAccordionHeader({super.key, required this.title});
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(AppSizes.lg),
-      child: Text(title),
-    );
-  }
-}
-
-class CartAccordionBody extends StatelessWidget {
-  const CartAccordionBody({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const CartItemCard(),
-        const SizedBox(height: AppSizes.spaceBtwItems),
-        const CartItemCard(),
-        const SizedBox(height: AppSizes.spaceBtwItems),
-        TextButton(
-          onPressed: () {},
-          child: const Text("Checkout from canteen"),
-        ),
-      ],
     );
   }
 }

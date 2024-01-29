@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:food_store/common/product/cart/cart_action_buttons.dart';
 import 'package:food_store/common/widgets/images/rounded_image.dart';
+import 'package:food_store/features/canteen/models/menu_item_model.dart';
+import 'package:food_store/features/cart/controllers/cart_controller.dart';
+import 'package:food_store/features/cart/models/cart_item_model.dart';
 import 'package:food_store/utils/constants/sizes.dart';
+import 'package:get/get.dart';
 
 class FoodItemCard extends StatelessWidget {
   const FoodItemCard({
@@ -12,6 +16,8 @@ class FoodItemCard extends StatelessWidget {
     required this.image,
     this.imageSize,
     this.isNetworkImage = false,
+    this.id = '',
+    this.count = 0,
   });
 
   final String foodName;
@@ -20,6 +26,31 @@ class FoodItemCard extends StatelessWidget {
   final int price;
   final String image;
   final bool isNetworkImage;
+  final String id;
+  final int count;
+
+  void updateCount(int count) {
+    CartItemModel item = CartItemModel(
+      count: count,
+      item: MenuItemModel(
+        id: id,
+        name: foodName,
+        canteen: canteenName ?? '',
+        price: price,
+        image: image,
+      ),
+    );
+
+    // get the controller instance
+    final controller = Get.put(CartController());
+
+    // if count is zero, then remove from cart
+    if (count == 0) {
+      controller.removeFromCart(canteenName ?? '', id);
+    } else {
+      controller.addToCart(item, count);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +95,8 @@ class FoodItemCard extends StatelessWidget {
                       children: [
                         Text('Rs. ${price.toString()}',
                             style: Theme.of(context).textTheme.bodySmall),
-                        const CartActionButtons(),
+                        CartActionButtons(
+                            updateCount: updateCount, initCount: count),
                       ],
                     ),
                   ],

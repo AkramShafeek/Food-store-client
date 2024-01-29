@@ -54,7 +54,7 @@ class PreviouslyOrderedCardV2 extends StatelessWidget {
                       children: [
                         Text('Rs. ${price.toString()}',
                             style: Theme.of(context).textTheme.titleMedium),
-                        const CartActionButtons(),
+                        CartActionButtons(updateCount: () {}),
                       ],
                     ),
                   ],

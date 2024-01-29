@@ -36,7 +36,6 @@ class MenuItemRepository extends GetxController {
     } on PlatformException catch (e) {
       throw AppPlatformException(e.code).message;
     } catch (e) {
-      print(e);
       throw "Something went wrong, please try again later";
     }
   }

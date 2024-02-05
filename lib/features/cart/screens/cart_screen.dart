@@ -1,8 +1,6 @@
-import 'package:accordion/accordion.dart';
 import 'package:flutter/material.dart';
 import 'package:food_store/common/product/item_cards/food_item_card.dart';
 import 'package:food_store/common/widgets/containers/rounded_container.dart';
-import 'package:food_store/features/cart/cart%20item%20card/cart_item_card.dart';
 import 'package:food_store/features/cart/controllers/cart_controller.dart';
 import 'package:food_store/features/cart/models/cart_item_model.dart';
 import 'package:food_store/features/cart/screens/widgets/cart_screen_header.dart';
@@ -10,7 +8,6 @@ import 'package:food_store/utils/constants/colors.dart';
 import 'package:food_store/utils/constants/sizes.dart';
 import 'package:food_store/utils/helper/helper_functions.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -94,6 +91,7 @@ class Cart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(CartController());
     return RoundedContainer(
       radius: AppSizes.sm,
       padding: const EdgeInsets.all(AppSizes.md),
@@ -130,7 +128,8 @@ class Cart extends StatelessWidget {
             children: [
               const Text("Total: 80"),
               TextButton(
-                onPressed: () {},
+                onPressed: () =>
+                    controller.checkoutFromCanteen(canteen: canteen),
                 child: const Text("Checkout"),
               ),
             ],

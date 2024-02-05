@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:food_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:food_store/features/orders/models/order_item_model.dart';
 
 class OrderModel {
@@ -34,10 +35,16 @@ class OrderModel {
   // function to convert OrderModel data into json
   Map<String, dynamic> toJson() {
     return {
-      "id": id,
+      "userId": AuthenticationRepository.instance.authUser?.uid,
+      "merchantId": "IlKiE8kcPBUDw9fBhoLl62M9tq62",
       "canteen": canteen,
       "totalPrice": totalPrice,
-      "orders": orders,
+      "orders": orders
+          .map((e) => {
+                "count": e.count,
+                "item": e.item.toJson(),
+              })
+          .toList(),
       "status": status,
     };
   }

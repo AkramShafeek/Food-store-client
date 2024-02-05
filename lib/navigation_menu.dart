@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_store/features/canteen/screens/canteen.dart';
 import 'package:food_store/features/home/screens/home.dart';
+import 'package:food_store/features/orders/screens/orders.dart';
 import 'package:food_store/features/personalization/screens/settings/settings.dart';
 import 'package:food_store/utils/constants/colors.dart';
 import 'package:food_store/utils/helper/helper_functions.dart';
@@ -54,7 +55,7 @@ class NavigationController extends GetxController {
   final screens = [
     const HomeScreen(),
     CanteenScreen(),
-    const Center(child: Text("cart")),
+    const OrderScreen(),
     const SettingsScreen(),
   ];
 }

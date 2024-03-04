@@ -3,6 +3,9 @@ class AppImages {
       "assets/images/food_items/veg_fried_maggi.jpeg";
   static const String vegFriedMaggi2 =
       "assets/images/food_items/veg_fried_maggi_2.jpeg";
+  static const String burger = "assets/images/food_items/burger.jpg";
+  static const String bisiBeleBath =
+      "assets/images/food_items/bisibelebath.jpg";
 
   static const String nescafeCanteen =
       "assets/images/food_items/nescafe_canteen.png";
@@ -28,6 +31,8 @@ class AppImages {
       "assets/images/animations/sammy-line-travel-backpack-with-passport-and-air-ticket.gif";
   static const String loaderAnimation =
       "assets/images/animations/141594-animation-of-docer.json";
+  static const String paymentSuccessful =
+      "assets/images/animations/payment_successful.json";
 
   // -- OnBoarding Texts
   static const String onBoardingImage1 =

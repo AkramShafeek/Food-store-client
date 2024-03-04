@@ -33,7 +33,10 @@ class OrderRepository extends GetxController {
                       |-- name
                       |-- canteen
       */
-      await _db.collection("PendingOrders").add(order.toJson());
+      DocumentReference doc =
+          await _db.collection("PendingOrders").add(order.toJson());
+      String id = doc.id;
+      await doc.update({"uid": id});
     } on FirebaseAuthException catch (e) {
       throw AppFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {

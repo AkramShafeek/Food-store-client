@@ -6,9 +6,16 @@ import 'package:food_store/utils/constants/sizes.dart';
 import 'package:food_store/utils/helper/helper_functions.dart';
 
 class PopularItemCard extends StatelessWidget {
-  const PopularItemCard({super.key, required this.image});
+  const PopularItemCard({
+    super.key,
+    required this.image,
+    required this.name,
+    required this.canteen,
+  });
 
   final String image;
+  final String name;
+  final String canteen;
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +52,12 @@ class PopularItemCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Veg Fried Maggi",
+                        name,
                         style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       const SizedBox(height: AppSizes.sm),
                       Text(
-                        "Vidyarti Khana",
+                        canteen,
                         style: Theme.of(context).textTheme.bodySmall,
                       )
                     ],

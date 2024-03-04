@@ -70,9 +70,21 @@ class HomeScreen extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.all(AppSizes.md),
                     child: PromoSlider(slides: [
-                      AppImages.vegFriedMaggi2,
-                      AppImages.vegFriedMaggi,
-                      AppImages.vegFriedMaggi,
+                      {
+                        "image": AppImages.vegFriedMaggi2,
+                        "name": "Veg Fired Maggi",
+                        "canteen": "Gowda Canteen"
+                      },
+                      {
+                        "image": AppImages.nescafeCanteen,
+                        "name": "Hot Coffee",
+                        "canteen": "Nescafe"
+                      },
+                      {
+                        "image": AppImages.vegFriedMaggi,
+                        "name": "Veg Fired Maggi",
+                        "canteen": "Vidyarthi Khana"
+                      },
                     ]),
                   ),
                   // PopularItemCard(image: AppImages.vegFriedMaggi),

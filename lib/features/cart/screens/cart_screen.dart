@@ -6,7 +6,6 @@ import 'package:food_store/features/cart/models/cart_item_model.dart';
 import 'package:food_store/features/cart/screens/widgets/cart_screen_header.dart';
 import 'package:food_store/utils/constants/colors.dart';
 import 'package:food_store/utils/constants/sizes.dart';
-import 'package:food_store/utils/helper/helper_functions.dart';
 import 'package:get/get.dart';
 
 class CartScreen extends StatelessWidget {
@@ -14,41 +13,9 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = AppHelperFunctions.isDarkMode(context);
     final controller = Get.put(CartController());
 
     return Scaffold(
-      bottomNavigationBar: BottomAppBar(
-        padding: const EdgeInsets.all(0),
-        height: 100,
-        child: Container(
-          color: isDark ? AppColors.dark : AppColors.light,
-          padding: const EdgeInsets.all(AppSizes.md),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                flex: 2,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: AppSizes.sm),
-                  child: Text(
-                    "Total: 120",
-                    style: Theme.of(context).textTheme.headlineSmall,
-                  ),
-                ),
-              ),
-              const SizedBox(width: AppSizes.spaceBtwItems + 5),
-              Expanded(
-                flex: 4,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: const Text("Checkout All"),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
       body: SingleChildScrollView(
         child: Stack(
           children: [
@@ -126,7 +93,7 @@ class Cart extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text("Total: 80"),
+              Obx(() => Text("Total: ${controller.canteenTotal[canteen]}")),
               TextButton(
                 onPressed: () =>
                     controller.checkoutFromCanteen(canteen: canteen),

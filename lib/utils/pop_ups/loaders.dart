@@ -4,13 +4,14 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AppLoaders {
-  static successSnackBar({required title, message = ''}) {
+  static successSnackBar(
+      {Color color = AppColors.primary, required title, message = ''}) {
     Get.snackbar(title, message,
         isDismissible: true,
         dismissDirection: DismissDirection.horizontal,
         shouldIconPulse: true,
         colorText: AppColors.white,
-        backgroundColor: AppColors.primary,
+        backgroundColor: color,
         snackPosition: SnackPosition.TOP,
         duration: const Duration(seconds: 3),
         margin: const EdgeInsets.all(20),

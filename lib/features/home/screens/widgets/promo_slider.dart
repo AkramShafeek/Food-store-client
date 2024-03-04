@@ -11,7 +11,7 @@ class PromoSlider extends StatelessWidget {
     required this.slides,
   });
 
-  final List<String> slides;
+  final List<Map<String, String>> slides;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,13 @@ class PromoSlider extends StatelessWidget {
             viewportFraction: 1,
             onPageChanged: (index, _) => controller.updateSlider(index),
           ),
-          items: slides.map((url) => PopularItemCard(image: url)).toList(),
+          items: slides
+              .map((item) => PopularItemCard(
+                    image: item["image"]!,
+                    name: item["name"]!,
+                    canteen: item["canteen"]!,
+                  ))
+              .toList(),
         ),
         const SizedBox(height: AppSizes.md),
         Obx(
